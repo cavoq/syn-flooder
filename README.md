@@ -13,4 +13,4 @@ pip install --pre scapy[basic]
 ```
 python3 syn_flooding.py -t 192.168.2.1 -p 80 -a 10000
 ```
-Will send 10000 packets to 192.168.2.1:80
+will send 10000 packets to 192.168.2.1:80
