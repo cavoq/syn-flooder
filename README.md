@@ -1,5 +1,5 @@
 # SYN Flooding
-Tool for SYN-Flooding Attack
+Tool for SYN-Flooding attack
 
 ## Disclaimer
 This tool is designed for educational purposes only, i do not support the use for any illegal activities.
