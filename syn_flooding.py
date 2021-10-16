@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import random
 from scapy.all import send, IP, TCP
