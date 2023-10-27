@@ -6,7 +6,7 @@ This tool is designed for educational purposes only, i do not support the use fo
 
 ## Requirements
 ```
-pip install -r requirements.txt
+pip install -r requirements.txt --break-system-packages
 ```
 
 ## Usage

